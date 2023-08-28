@@ -29,7 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3762997424255595222}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3349767332668485081
 GameObject:
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2457665421265947151}
   m_Layer: 0
   m_Name: roads_right
-  m_TagString: roadRight
+  m_TagString: RightTurn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,8 +63,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5361588193794198142}
   - {fileID: 1182928942928774952}
+  - {fileID: 5361588193794198142}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,15 +217,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.700005
+      value: 19.78
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 3.41
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -266,3 +266,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
   m_PrefabInstance: {fileID: 7858739215039348582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1182928942928774957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9035701029552158795, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
+  m_PrefabInstance: {fileID: 7858739215039348582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &8722474612470495957
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182928942928774957}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -5.7498617, y: 5.7289844}
+      - {x: 2.8124104, y: 7.7745867}
+      - {x: 0.024220258, y: -0.13687891}
+      - {x: -8.006675, y: -2.5496738}

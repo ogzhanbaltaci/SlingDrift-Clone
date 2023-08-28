@@ -41,13 +41,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7965660728312453749}
   - component: {fileID: 7965660728312453750}
-  - component: {fileID: 1294197422}
   - component: {fileID: 1294197420}
   - component: {fileID: 1294197421}
   - component: {fileID: 1294197419}
   m_Layer: 0
   m_Name: roads_left
-  m_TagString: roadLeft
+  m_TagString: LeftTurn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,27 +120,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1294197422
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965660728312453751}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!68 &1294197420
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -159,14 +137,19 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -23.217775, y: 31.434395}
-  - {x: -18.84393, y: 31.184906}
+  - {x: -18.84393, y: 31.08081}
   - {x: -15.18044, y: 30.426052}
+  - {x: -11.862512, y: 29.319511}
   - {x: -8.608758, y: 27.963726}
+  - {x: -5.3314085, y: 25.973652}
   - {x: -3.287819, y: 24.452194}
+  - {x: -0.28594875, y: 21.687336}
   - {x: 2.2471037, y: 18.768131}
   - {x: 5.352233, y: 13.587646}
+  - {x: 6.8391185, y: 9.89329}
   - {x: 8.061694, y: 5.649268}
-  - {x: 8.378576, y: -0.35933304}
+  - {x: 8.317138, y: 3.1926441}
+  - {x: 8.534721, y: 0.057052612}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -189,8 +172,11 @@ EdgeCollider2D:
   m_Points:
   - {x: -23.135195, y: 14.670429}
   - {x: -18.020435, y: 13.78962}
+  - {x: -15.008458, y: 12.164318}
   - {x: -12.670484, y: 10.354856}
+  - {x: -10.774966, y: 7.936924}
   - {x: -9.25162, y: 5.2953186}
+  - {x: -8.497228, y: 2.5921707}
   - {x: -8.137648, y: -0.11158848}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -219,7 +205,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9035701029552158792, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_Radius
-      value: 4.52
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158795, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_Name
@@ -235,23 +221,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.1
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.9
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -292,3 +278,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
   m_PrefabInstance: {fileID: 1436353664052718580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7965660728552526783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9035701029552158795, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
+  m_PrefabInstance: {fileID: 1436353664052718580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &291700827162978147
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965660728552526783}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.8548439, y: 7.076738}
+      - {x: 6.7870007, y: 6.7648525}
+      - {x: 7.1085024, y: -3.7398689}
+      - {x: -0.02832694, y: 0.0007339418}

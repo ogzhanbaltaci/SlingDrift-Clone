@@ -178,7 +178,7 @@ TextureImporter:
         width: 1006
         height: 1011
       alignment: 9
-      pivot: {x: 0.72393286, y: 0.0005331973}
+      pivot: {x: 0.72023815, y: 0.0031040392}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +262,7 @@ TextureImporter:
         width: 1011
         height: 2029
       alignment: 9
-      pivot: {x: 0.9938977, y: 0.12953357}
+      pivot: {x: 0.99210876, y: 0.13000952}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,12 +299,12 @@ TextureImporter:
       name: roads_straight_horizantal-right
       rect:
         serializedVersion: 2
-        x: 834
+        x: 835
         y: 691
-        width: 1265
+        width: 1263
         height: 553
       alignment: 9
-      pivot: {x: -0.00038792304, y: 0.49201268}
+      pivot: {x: 0.0007464363, y: 0.49168897}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

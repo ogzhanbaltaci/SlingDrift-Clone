@@ -7,6 +7,11 @@ TagManager:
   - roadLeft
   - roadRight
   - finishPosition
+  - Undefined
+  - RightTurn
+  - LeftTurn
+  - StraightLeft
+  - StraightRight
   layers:
   - Default
   - TransparentFX
@@ -46,4 +51,10 @@ TagManager:
     locked: 0
   - name: Roads
     uniqueID: 1064352231
+    locked: 0
+  - name: Car
+    uniqueID: 1353418693
+    locked: 0
+  - name: Particles
+    uniqueID: 374175375
     locked: 0

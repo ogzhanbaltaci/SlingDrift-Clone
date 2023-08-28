@@ -9,14 +9,16 @@ public class DriftPoleController : MonoBehaviour
 
     public bool isTriggered;
     public bool ropeAttached;
-    
     public int turningAngle;
     
     [SerializeField] Transform rope;
     public LineRenderer lr;
+    CarMovementController carMovementController;
+    
 
     void Start()
     {
+        carMovementController = FindObjectOfType<CarMovementController>();
         lr = GetComponentInChildren<LineRenderer>();
         lr.positionCount = 2;
     }
@@ -37,9 +39,11 @@ public class DriftPoleController : MonoBehaviour
     
     public void isCall(Transform playerCar)
     {
-        
-        playerCar.transform.RotateAround(transform.position, transform.forward * turningAngle, Time.deltaTime * 90f);
-        playerCar.Rotate(0,0,Time.deltaTime * 50 * turningAngle);
+        //playerCar.LookAt(transform.position.z);
+       // playerCar.transform.RotateAround(transform.position, transform.forward * turningAngle, Time.deltaTime * 90f);
+        carMovementController.isDrifting = true;
+        //playerCar.transform.RotateAround(transform.position, transform.forward, Time.deltaTime * turningAngle * 50);
+        //playerCar.Rotate(0,0,Time.deltaTime * 140 * turningAngle);
         lr.SetPosition(0, transform.position);
         lr.SetPosition(1, playerCar.transform.position);
 
@@ -50,8 +54,6 @@ public class DriftPoleController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         isTriggered = true;
-        Debug.Log(other.transform);
-        
         
         //other.transform.RotateAround(transform.position, transform.up, Time.deltaTime * 50f);
     }

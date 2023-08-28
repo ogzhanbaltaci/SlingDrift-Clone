@@ -2,23 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
+using System.Diagnostics.Tracing;
 
 public class LeftTurn : MonoBehaviour
 {
     [SerializeField] GameObject straightHorizantalLeft;
     public Vector3 position;
-    Vector3 worldPosition;
-    GameObject finishPos;
+
+
+    GameManager gameManager;
     void Start()
     {
-        position = transform.Find("FinishPos").position;
-        Instantiate(straightHorizantalLeft, position, Quaternion.identity); 
+        gameManager = FindObjectOfType<GameManager>();
+        BuildRoad();
+        
     }
 
 
     
-    void Update()
+    public void BuildRoad()
     {
-        
+        position = transform.Find(GameConstants.FinishPos).position;
+        if(gameManager.counter < gameManager.builtRoadCounter)
+        {
+            GameObject road = Instantiate(straightHorizantalLeft, position, Quaternion.identity);
+            gameManager.builtRoads.Add(road);
+            gameManager.counter++;
+        }
+            
     }
 }

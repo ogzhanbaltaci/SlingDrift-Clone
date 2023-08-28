@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4208520186867205251}
   m_Layer: 0
   m_Name: roads_u-turn_right
-  m_TagString: Untagged
+  m_TagString: RightTurn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,28 +136,39 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.25146103, y: 55.3714}
-  - {x: -6.117447, y: 54.655334}
-  - {x: -11.341316, y: 53.326836}
-  - {x: -17.951126, y: 49.708412}
-  - {x: -23.960808, y: 44.32551}
-  - {x: -26.747032, y: 40.406082}
-  - {x: -28.658455, y: 36.743847}
-  - {x: -30.4021, y: 32.291634}
-  - {x: -31.237206, y: 27.806986}
-  - {x: -31.620705, y: 22.985575}
-  - {x: -31.371292, y: 19.184206}
-  - {x: -30.329994, y: 14.840967}
-  - {x: -29.128525, y: 11.189276}
-  - {x: -27.547646, y: 8.230677}
+  - {x: 0.2402687, y: 55.125534}
+  - {x: -5.926216, y: 54.46411}
+  - {x: -11.150093, y: 52.889748}
+  - {x: -14.3252945, y: 51.51372}
+  - {x: -17.623314, y: 49.48987}
+  - {x: -20.847878, y: 46.919865}
+  - {x: -23.52372, y: 44.161606}
+  - {x: -26.146034, y: 40.624622}
+  - {x: -26.3919, y: 40.132896}
+  - {x: -27.301888, y: 38.738575}
+  - {x: -28.357948, y: 36.743847}
+  - {x: -29.422821, y: 34.09808}
+  - {x: -30.1016, y: 32.264313}
+  - {x: -30.655495, y: 29.55412}
+  - {x: -30.936699, y: 27.752352}
+  - {x: -31.22013, y: 25.365757}
+  - {x: -31.292885, y: 23.094843}
+  - {x: -31.01616, y: 19.266161}
+  - {x: -30.193405, y: 14.950235}
+  - {x: -28.773392, y: 11.325869}
+  - {x: -27.356422, y: 8.285311}
   - {x: -25.927124, y: 5.754568}
-  - {x: -23.788658, y: 2.7917328}
-  - {x: -21.925667, y: 0.85204124}
+  - {x: -23.624748, y: 2.9010048}
+  - {x: -21.67981, y: 0.79740715}
   - {x: -18.87407, y: -1.648344}
   - {x: -16.133781, y: -3.484373}
+  - {x: -13.198654, y: -5.0995255}
   - {x: -10.883331, y: -6.0021076}
-  - {x: -6.3839035, y: -7.3072643}
-  - {x: -0.15235901, y: -7.9799595}
+  - {x: -9.005386, y: -6.698452}
+  - {x: -6.3839035, y: -7.41654}
+  - {x: -4.61335, y: -7.8055687}
+  - {x: -2.3380432, y: -8.061829}
+  - {x: 0.12081909, y: -8.143869}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -178,24 +189,34 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.34326553, y: 9.006931}
+  - {x: 0.104328156, y: 8.895035}
+  - {x: -1.6521835, y: 8.963058}
   - {x: -3.0820465, y: 9.285593}
+  - {x: -4.523224, y: 9.681923}
   - {x: -6.5587006, y: 10.541674}
   - {x: -9.357376, y: 12.407206}
-  - {x: -11.656502, y: 14.896723}
-  - {x: -12.615372, y: 16.2634}
-  - {x: -13.370026, y: 17.80248}
-  - {x: -14.03331, y: 19.670717}
-  - {x: -14.415932, y: 21.423918}
-  - {x: -14.614975, y: 23.710394}
-  - {x: -14.376083, y: 26.178911}
-  - {x: -13.462891, y: 29.412668}
-  - {x: -12.04879, y: 31.892912}
-  - {x: -10.292648, y: 34.022453}
-  - {x: -8.118568, y: 35.756767}
-  - {x: -5.6083603, y: 37.162476}
-  - {x: -3.0279388, y: 37.98996}
-  - {x: -0.15235901, y: 38.262657}
+  - {x: -11.5445175, y: 14.944719}
+  - {x: -12.046013, y: 15.747135}
+  - {x: -12.426933, y: 16.299547}
+  - {x: -12.881317, y: 17.035114}
+  - {x: -13.028557, y: 17.483997}
+  - {x: -13.286102, y: 18.082228}
+  - {x: -13.663879, y: 19.301647}
+  - {x: -13.893433, y: 20.00641}
+  - {x: -14.192139, y: 21.451895}
+  - {x: -14.363205, y: 23.65444}
+  - {x: -14.022469, y: 26.086664}
+  - {x: -13.62339, y: 27.568783}
+  - {x: -13.124649, y: 29.19742}
+  - {x: -12.469749, y: 30.492275}
+  - {x: -11.741295, y: 31.616163}
+  - {x: -10.669701, y: 33.01698}
+  - {x: -9.985153, y: 33.73033}
+  - {x: -7.7956924, y: 35.54152}
+  - {x: -5.377739, y: 36.901108}
+  - {x: -2.8434372, y: 37.728584}
+  - {x: -1.2239532, y: 37.983288}
+  - {x: 0.12438965, y: 38.032036}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -223,7 +244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9035701029552158792, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_Radius
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158795, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_Name
@@ -239,19 +260,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.4
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -291,6 +312,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
+--- !u!1 &5167885452042501312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9035701029552158795, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}
+  m_PrefabInstance: {fileID: 4241623693533414539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &6206904983076294851
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167885452042501312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.938259, y: 0.058707237}
+      - {x: 1.805926, y: -5.5096264}
+      - {x: -4.951942, y: -5.4947853}
+      - {x: -5.0535636, y: 0.07489616}
+      - {x: -4.7709494, y: 4.8831363}
+      - {x: 1.9563562, y: 5.7436852}
 --- !u!4 &5167885452042501317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9035701029552158798, guid: 8191ba558a5059441bddb75fefc4274f, type: 3}

@@ -6,14 +6,25 @@ public class RightTurn : MonoBehaviour
 {
     [SerializeField] GameObject straightHorizantalRight;
     public Vector3 position;
+
+
+    GameManager gameManager;
     void Start()
     {
-        position = transform.Find("FinishPos").position;
-        Instantiate(straightHorizantalRight, position, Quaternion.identity); 
+        gameManager = FindObjectOfType<GameManager>();
+        BuildRoad();
+        
     }
 
-    void Update()
+    public void BuildRoad()
     {
-        
+        position = transform.Find(GameConstants.FinishPos).position;
+        if(gameManager.counter < gameManager.builtRoadCounter)
+        {
+            GameObject road = Instantiate(straightHorizantalRight, position, Quaternion.identity);
+            gameManager.builtRoads.Add(road);
+            gameManager.counter++;
+        }
+            
     }
 }

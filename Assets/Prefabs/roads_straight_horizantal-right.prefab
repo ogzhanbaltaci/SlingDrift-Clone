@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 7862276347122118265}
   - component: {fileID: 4216391319795083779}
   - component: {fileID: -4555815224957839528}
+  - component: {fileID: 4472787461336190304}
+  - component: {fileID: 1332786076146063479}
   m_Layer: 0
   m_Name: roads_straight_horizantal-right
-  m_TagString: Untagged
+  m_TagString: StraightRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,9 +101,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roads:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8657991134988509432, guid: 99a3b3176a8cfc54e97452f8d2b2fca1, type: 3}
+  - {fileID: 7641177772442343636, guid: 755f12596bc982e4b80906ff63ae4526, type: 3}
   position: {x: 0, y: 0, z: 0}
+--- !u!68 &4472787461336190304
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818195924103557753}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.11212158, y: 8.658608}
+  - {x: 39.5633, y: 8.617272}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &1332786076146063479
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818195924103557753}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.029457092, y: -8.371284}
+  - {x: 39.35662, y: -8.371284}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7794154232945673888
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7794154232945673888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.7, y: 0, z: 0}
+  m_LocalPosition: {x: 39.16, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
