@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> builtRoads = new List<GameObject>();
     public int counter = 0;
     public int builtRoadCounter = 10;
-    
+    public int levelCounter = 0;
+    public int levelUpCap = 12;
+
     CarMovementController carMovementController;
     GameObject lastRoad;
 
@@ -34,11 +36,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(builtRoads.Count > 9)
+        if(builtRoads.Count > 10)
             lastRoad = builtRoads[builtRoadCounter-1];
+        if(levelCounter > levelUpCap)
+            levelCounter = 0;
 
         levelText.text = carMovementController.roadSeen.ToString();
-        if(carMovementController.roadSeen * 2 >= builtRoadCounter - 8 && carMovementController.levelCounter < carMovementController.levelUpCap)
+        if(carMovementController.roadSeen * 2 - 1 >= builtRoadCounter - 8 && levelCounter < levelUpCap)
         {
             if(lastRoad.tag == GameConstants.LeftTurn)
             {
@@ -66,17 +70,17 @@ public class GameManager : MonoBehaviour
                 builtRoads[builtRoadCounter-2].GetComponent<StraightUp>().BuildRoad();
             }
         }        
-        else if(carMovementController.levelCounter == carMovementController.levelUpCap)
+        else if(levelCounter == levelUpCap)
         {
             if(lastRoad.tag == GameConstants.LeftTurn)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<LeftTurn>().BuildRoad();
+                builtRoads[builtRoadCounter-2].GetComponent<LeftTurn>().BuildLevelUpRoad();
             }
             else if(lastRoad.tag == GameConstants.RightTurn)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<RightTurn>().BuildRoad();
+                builtRoads[builtRoadCounter-2].GetComponent<RightTurn>().BuildLevelUpRoad();
             }
         }
     }

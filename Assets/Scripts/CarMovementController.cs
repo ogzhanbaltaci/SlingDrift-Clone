@@ -12,14 +12,16 @@ public class CarMovementController : MonoBehaviour
     public DriftPoleController driftPoleController;
     public GameManager gameManager;
     public Rigidbody2D rb;
+    public Transform target;
     
     public int roadSeen = 0;
     public bool isTriggered;
     public bool isDrifting;
     public bool isCrashed;
     int levelUpPoints = 5;
-    public int levelUpCap = 12;
-    public int levelCounter = 0;
+    float rotationSpeed = 70f;
+    bool isLevelUp = false;
+    
     
     
     [Header("Car settings")]
@@ -42,11 +44,11 @@ public class CarMovementController : MonoBehaviour
     
     void Update() 
     {
-        if(levelCounter == levelUpCap)
+        /*if(gameManager.levelCounter == gameManager.levelUpCap)
         {
-            levelCounter = 0;
+            gameManager.levelCounter = 0;
             // do level up things
-        }
+        }*/
         if(roadSeen >= levelUpPoints)
         {
             maxSpeed += 1;
@@ -61,6 +63,15 @@ public class CarMovementController : MonoBehaviour
             ApplyEngineForce();
             KillOrthogonalVelocity();
             CheckInput();
+        }
+        if(isLevelUp)
+        {
+            Debug.Log("update e girdi ");
+            Vector3 direction = target.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
         }
     }
 
@@ -78,7 +89,7 @@ public class CarMovementController : MonoBehaviour
         }
         else if(isTriggered == true)
         {
-            driftPoleController.lr.positionCount = 0; 
+            //driftPoleController.lr.positionCount = 0; 
             isDrifting = false;
             //Debug.Log(gameManager.builtRoads[roadSeen].transform.position);
             //transform.LookAt(gameManager.builtRoads[roadSeen].transform.position * Time.deltaTime);
@@ -104,13 +115,28 @@ public class CarMovementController : MonoBehaviour
         {
             driftPoleController.turningAngle = 1;
         }     
+        else if(other.name == (GameConstants.LevelUpLeft) || 
+                other.name == (GameConstants.LevelUpRight) ||
+                other.name == (GameConstants.LevelUpUp))
+        { 
+            
+            target = other.transform.Find(GameConstants.FinishPos);
+            isLevelUp = true;
+            Debug.Log("ontriggerEnter : " + isLevelUp);
+            accelerationFactor = 100f;
+            maxSpeed = 100f;
+        }
     }
+
 
     private void OnTriggerExit2D(Collider2D other) 
     {
         roadSeen++;
         isTriggered = false;  
-        driftPoleController.lr.positionCount = 0; 
+        //driftPoleController.lr.positionCount = 0; 
+        accelerationFactor = 30f;
+        isLevelUp = false;
+        Debug.Log("exite girdi : " + isLevelUp);
         /*Debug.Log(gameManager.builtRoads[roadSeen * 2].transform.position);
           Vector3 direction = gameManager.builtRoads[roadSeen * 2].transform.position;
           Debug.Log(transform.position);
@@ -120,7 +146,7 @@ public class CarMovementController : MonoBehaviour
         // Z rotasyonunu hesaplayarak nesneyi döndür
         transform.rotation = Quaternion.Euler(0, 0, angle);*/
     }
-    private void OnCollisionEnter2D(Collision2D other) 
+    /*private void OnCollisionEnter2D(Collision2D other) 
     {
         gameManager.EnableRetryCanvas();
         isCrashed = true;
@@ -132,7 +158,7 @@ public class CarMovementController : MonoBehaviour
         isDrifting = false;
         crashEffect.Play();
         
-    }
+    }*/
 
     void ApplyEngineForce()
     {

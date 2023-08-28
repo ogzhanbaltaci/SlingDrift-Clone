@@ -11,6 +11,9 @@ public static class GameConstants
     public static string StraightLeft = "StraightLeft";
     public static string StraightRight = "StraightRight";
     public static string FinishPos = "FinishPos";
+    public static string LevelUpLeft = "straight_level-up_horizantal-left(Clone)";
+    public static string LevelUpRight = "straight_level-up_horizantal-right(Clone)";
+    public static string LevelUpUp = "straight_level-up_vertical(Clone)";
     
 
 

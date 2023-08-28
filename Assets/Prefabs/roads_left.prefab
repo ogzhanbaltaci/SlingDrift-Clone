@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f432c36939a39948b3e0352c782e230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  straightHorizantalLeft: {fileID: 8804761492058685178, guid: 2a55c8dfcb39dec4e899c8e770cfb1ab, type: 3}
+  straightRoad: {fileID: 8804761492058685178, guid: 2a55c8dfcb39dec4e899c8e770cfb1ab, type: 3}
+  straightRoadFinish: {fileID: 8246362023148197712, guid: 673ec11187c035e40a58d94358fa89d9, type: 3}
   position: {x: 0, y: 0, z: 0}
 --- !u!114 &-6743439754458506057
 MonoBehaviour:

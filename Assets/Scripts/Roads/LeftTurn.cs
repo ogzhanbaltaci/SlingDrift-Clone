@@ -6,7 +6,8 @@ using System.Diagnostics.Tracing;
 
 public class LeftTurn : MonoBehaviour
 {
-    [SerializeField] GameObject straightHorizantalLeft;
+    [SerializeField] GameObject straightRoad;
+    [SerializeField] GameObject straightRoadFinish;
     public Vector3 position;
 
 
@@ -17,7 +18,17 @@ public class LeftTurn : MonoBehaviour
         BuildRoad();
         
     }
-    
+    public void BuildLevelUpRoad()
+    {
+        position = transform.Find(GameConstants.FinishPos).position;
+        if(gameManager.counter < gameManager.builtRoadCounter)
+        {
+            GameObject road = Instantiate(straightRoadFinish, position, Quaternion.identity);
+            gameManager.builtRoads.Add(road);
+            gameManager.counter++;
+            gameManager.levelCounter++;
+        }
+    }
 
     
     public void BuildRoad()
@@ -25,9 +36,10 @@ public class LeftTurn : MonoBehaviour
         position = transform.Find(GameConstants.FinishPos).position;
         if(gameManager.counter < gameManager.builtRoadCounter)
         {
-            GameObject road = Instantiate(straightHorizantalLeft, position, Quaternion.identity);
+            GameObject road = Instantiate(straightRoad, position, Quaternion.identity);
             gameManager.builtRoads.Add(road);
             gameManager.counter++;
+            gameManager.levelCounter++;
         }
             
     }

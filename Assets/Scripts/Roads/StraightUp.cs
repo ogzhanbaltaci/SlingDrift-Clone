@@ -33,6 +33,7 @@ public class StraightUp : MonoBehaviour
             GameObject road = Instantiate(pickedRoad, position, Quaternion.identity);
             gameManager.builtRoads.Add(road);
             gameManager.counter++;
+            gameManager.levelCounter++;
         }
             
     }
