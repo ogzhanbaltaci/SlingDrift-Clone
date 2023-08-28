@@ -12,6 +12,8 @@ TagManager:
   - LeftTurn
   - StraightLeft
   - StraightRight
+  - LeftTurn90
+  - RightTurn90
   layers:
   - Default
   - TransparentFX

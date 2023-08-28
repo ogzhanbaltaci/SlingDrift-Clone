@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 9112512676271844722}
   - component: {fileID: 5160752749166252991}
   - component: {fileID: 9112512676271844723}
+  - component: {fileID: -8504480423853987427}
   m_Layer: 6
   m_Name: roads_straight_vertical
   m_TagString: Untagged
@@ -180,3 +181,16 @@ MonoBehaviour:
   roads:
   - {fileID: 7965660728312453751, guid: 08967da606c761f4ea96678d52b4f87d, type: 3}
   - {fileID: 3349767332668485081, guid: c31af2691f9a31e46b8741271a218d06, type: 3}
+--- !u!114 &-8504480423853987427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480964394372237083}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d6f21613fbfd04fa0eb36badc2014d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}

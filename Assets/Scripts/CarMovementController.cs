@@ -7,15 +7,19 @@ public class CarMovementController : MonoBehaviour
 {
     [SerializeField] float carSpeed = 10f;
     [SerializeField] ParticleSystem crashEffect;
+
     SpriteRenderer carSprite;
     public DriftPoleController driftPoleController;
     public GameManager gameManager;
     public Rigidbody2D rb;
+    
     public int roadSeen = 0;
     public bool isTriggered;
     public bool isDrifting;
     public bool isCrashed;
     int levelUpPoints = 5;
+    public int levelUpCap = 12;
+    public int levelCounter = 0;
     
     
     [Header("Car settings")]
@@ -24,34 +28,25 @@ public class CarMovementController : MonoBehaviour
     public float turnFactor = 3.5f;
     public float maxSpeed = 30;
 
-    //Local variables
     float accelerationInput = 1;
-    float steeringInput = 0;
-
     float rotationAngle = 0;
-
     float velocityVsUp = 0;
     float crashForce = 100f;
 
-
-
     void Awake() 
-    {
-        //driftPoleController =  FindObjectOfType<DriftPoleController>();   
+    {  
         carSprite = GetComponent<SpriteRenderer>();
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
     }
     
-    void Start()
-    {
-
-    }
-
     void Update() 
     {
-        //Move();
-        //CheckInput();
+        if(levelCounter == levelUpCap)
+        {
+            levelCounter = 0;
+            // do level up things
+        }
         if(roadSeen >= levelUpPoints)
         {
             maxSpeed += 1;
@@ -59,9 +54,14 @@ public class CarMovementController : MonoBehaviour
         }
     }
 
-    void Move()
+    void FixedUpdate()
     {
-        transform.Translate(transform.up * (Time.deltaTime * carSpeed), Space.World);
+        if(!isCrashed)
+        {
+            ApplyEngineForce();
+            KillOrthogonalVelocity();
+            CheckInput();
+        }
     }
 
     public void CheckInput()
@@ -74,10 +74,6 @@ public class CarMovementController : MonoBehaviour
                 driftPoleController.lr.positionCount = 2;
                 driftPoleController.isCall(transform);
                 ApplySteering();
-                
-                //Vector3 driftForceVector = transform.forward * 1 * driftForce;
-
-                //rb.AddForce(driftForceVector, ForceMode2D.Force);
             }
         }
         else if(isTriggered == true)
@@ -90,8 +86,6 @@ public class CarMovementController : MonoBehaviour
 
             // Yavaşça dönüş yap
             //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1f * Time.deltaTime);
-            
-  
         }
         else
         {
@@ -130,30 +124,14 @@ public class CarMovementController : MonoBehaviour
     {
         gameManager.EnableRetryCanvas();
         isCrashed = true;
-        //rb.AddForce(Vector2.zero, ForceMode2D.Impulse);
-        //rb.AddForce(-other.contacts[0].normal * crashForce, ForceMode2D.Impulse);
         carSprite.color = Color.black;
         Vector3 stoppingDirection = -other.contacts[0].normal;
-
            
         rb.AddForceAtPosition(stoppingDirection * crashForce, other.contacts[0].point, ForceMode2D.Impulse);
+        driftPoleController.lr.positionCount = 0;
+        isDrifting = false;
         crashEffect.Play();
         
-    }
-
-
-
-
-    void FixedUpdate()
-    {
-        if(!isCrashed)
-        {
-            ApplyEngineForce();
-
-            KillOrthogonalVelocity();
-
-            CheckInput();
-        }
     }
 
     void ApplyEngineForce()
@@ -171,7 +149,6 @@ public class CarMovementController : MonoBehaviour
 
     void ApplySteering()
     {
-
         //Update the rotation angle based on input
         rotationAngle -= driftPoleController.turningAngle * turnFactor ;
 
@@ -194,7 +171,6 @@ public class CarMovementController : MonoBehaviour
         //Returns how how fast the car is moving sideways. 
         return Vector2.Dot(transform.right, rb.velocity);
     }
-
 
     public float GetVelocityMagnitude()
     {

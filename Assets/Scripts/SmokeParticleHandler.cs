@@ -5,8 +5,7 @@ using UnityEngine;
 public class SmokeParticleHandler : MonoBehaviour
 {
     float particleEmissionRate = 0;
-
-
+    
     CarMovementController carMovementController;
     ParticleSystem particleSystemSmoke;
     ParticleSystem.EmissionModule particleSystemEmissionModule;

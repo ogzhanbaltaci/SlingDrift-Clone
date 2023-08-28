@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1772731969729984539}
   - component: {fileID: 2965121144688927471}
   - component: {fileID: 8850016555467832788}
+  - component: {fileID: 7265240052343475256}
   m_Layer: 0
   m_Name: roads_straight_horizantal-left
   m_TagString: StraightLeft
@@ -179,3 +180,16 @@ MonoBehaviour:
   - {fileID: 4241623693234108942, guid: f72886db847edff449b17eae86fcc97a, type: 3}
   - {fileID: 6729510641750772001, guid: a8dc7a97ca7dfe6468a8472722a6a3c4, type: 3}
   position: {x: 0, y: 0, z: 0}
+--- !u!114 &7265240052343475256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804761492058685178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d6f21613fbfd04fa0eb36badc2014d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -79.65, y: 28.3, z: 0}

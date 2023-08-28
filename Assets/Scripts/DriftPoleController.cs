@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class DriftPoleController : MonoBehaviour
 {
-    [SerializeField] 
-
+    [SerializeField] Transform rope;
+    
     public bool isTriggered;
     public bool ropeAttached;
     public int turningAngle;
-    
-    [SerializeField] Transform rope;
+
     public LineRenderer lr;
     CarMovementController carMovementController;
     

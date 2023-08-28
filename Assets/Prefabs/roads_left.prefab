@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1294197420}
   - component: {fileID: 1294197421}
   - component: {fileID: 1294197419}
+  - component: {fileID: -6743439754458506057}
   m_Layer: 0
   m_Name: roads_left
   m_TagString: LeftTurn
@@ -196,6 +197,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   straightHorizantalLeft: {fileID: 8804761492058685178, guid: 2a55c8dfcb39dec4e899c8e770cfb1ab, type: 3}
   position: {x: 0, y: 0, z: 0}
+--- !u!114 &-6743439754458506057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965660728312453751}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a194e78c49ec10742bad021dcda363a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -36.6, y: 43.64, z: 0.30062252}
+  gameManager: {fileID: 0}
 --- !u!1001 &1436353664052718580
 PrefabInstance:
   m_ObjectHideFlags: 0

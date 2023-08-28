@@ -5,18 +5,24 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManagerExperimental : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] Canvas retryCanvas;
     [SerializeField] Canvas startCanvas;
     [SerializeField] Canvas inGameCanvas;
     [SerializeField] TextMeshProUGUI scoreText;
-
     public List<GameObject> builtRoads = new List<GameObject>();
-    public int counter = 0;
-    public int builtRoadCounter = 10;
+    public List<GameObject> afterStraightLeftRoads = new List<GameObject>();
+    public List<GameObject> afterStraightRightRoads = new List<GameObject>();
+    public List<GameObject> afterStraightUpRoads = new List<GameObject>();
+    public  GameObject straightHorizantalRight;
+    public GameObject straightHorizantalLeft;
+    public GameObject straightVerticalUp;
+
     
+    public int counter = 0;
+    public int builtRoadCounter = 0;
     CarMovementController carMovementController;
     GameObject lastRoad;
 
@@ -34,53 +40,52 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(builtRoads.Count > 9)
-            lastRoad = builtRoads[builtRoadCounter-1];
+        if(builtRoads.Count > 0)
+            lastRoad = builtRoads[builtRoadCounter];
 
         levelText.text = carMovementController.roadSeen.ToString();
-        if(carMovementController.roadSeen * 2 >= builtRoadCounter - 8 && carMovementController.levelCounter < carMovementController.levelUpCap)
+        if(carMovementController.roadSeen * 2 + 1 >= builtRoadCounter - 8)
         {
             if(lastRoad.tag == GameConstants.LeftTurn)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<LeftTurn>().BuildRoad();
+                builtRoads[builtRoadCounter-1].GetComponent<LeftAndRightRoad>().BuildRoad(straightHorizantalLeft);
+                
             }
             else if(lastRoad.tag == GameConstants.RightTurn)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<RightTurn>().BuildRoad();
+                builtRoads[builtRoadCounter-1].GetComponent<LeftAndRightRoad>().BuildRoad(straightHorizantalRight);
+                
+            }
+            else if(lastRoad.tag == GameConstants.RightTurn90 || lastRoad.tag == GameConstants.LeftTurn90)
+            {
+                builtRoadCounter++;
+                builtRoads[builtRoadCounter-1].GetComponent<LeftAndRightRoad>().BuildRoad(straightVerticalUp);
+                
             }
             else if(lastRoad.tag == GameConstants.StraightLeft)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<StraightLeft>().BuildRoad();
+                builtRoads[builtRoadCounter-1].GetComponent<StraightRoad>().BuildRoad(afterStraightLeftRoads);
+                
             }
             else if(lastRoad.tag == GameConstants.StraightRight)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<StraightRight>().BuildRoad();
+                builtRoads[builtRoadCounter-1].GetComponent<StraightRoad>().BuildRoad(afterStraightRightRoads);
+                
             }
             else
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<StraightUp>().BuildRoad();
+                Debug.Log("Girdi" + builtRoadCounter);
+                builtRoads[builtRoadCounter-1].GetComponent<StraightRoad>().BuildRoad(afterStraightUpRoads);
+                
             }
-        }        
-        else if(carMovementController.levelCounter == carMovementController.levelUpCap)
-        {
-            if(lastRoad.tag == GameConstants.LeftTurn)
-            {
-                builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<LeftTurn>().BuildRoad();
-            }
-            else if(lastRoad.tag == GameConstants.RightTurn)
-            {
-                builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<RightTurn>().BuildRoad();
-            }
-        }
-    }
 
+        }        
+    }
     public void RetryLevel()
     {
         SceneManager.LoadScene(0);

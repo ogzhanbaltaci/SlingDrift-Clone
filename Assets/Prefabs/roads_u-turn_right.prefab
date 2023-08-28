@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6974819198841273856}
   - component: {fileID: 8767893566121294184}
   - component: {fileID: 4208520186867205251}
+  - component: {fileID: -1711081004994966117}
   m_Layer: 0
   m_Name: roads_u-turn_right
   m_TagString: RightTurn
@@ -235,6 +236,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   straightHorizantalRight: {fileID: 2818195924103557753, guid: 6dea83cb702940f4c8e069bcf2504fc9, type: 3}
   position: {x: 0, y: 0, z: 0}
+--- !u!114 &-1711081004994966117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241623693234108942}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a194e78c49ec10742bad021dcda363a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  gameManager: {fileID: 0}
 --- !u!1001 &4241623693533414539
 PrefabInstance:
   m_ObjectHideFlags: 0

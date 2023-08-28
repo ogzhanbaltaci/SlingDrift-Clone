@@ -41,9 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4029523764078401424}
   - component: {fileID: 7370181044635739253}
-  - component: {fileID: -299759084488345663}
   - component: {fileID: 7737296519107720314}
   - component: {fileID: 8359286128067289373}
+  - component: {fileID: -299759084488345663}
+  - component: {fileID: 2716621847620728325}
   m_Layer: 0
   m_Name: roads_right90
   m_TagString: RightTurn
@@ -120,20 +121,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-299759084488345663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6729510641750772001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5cf1c505997c4043912c0a7774c2b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  straightHorizantalRight: {fileID: 6480964394372237083, guid: 27ae09a5ac9bafa46a1bb74f1695d64c, type: 3}
-  position: {x: 0, y: 0, z: 0}
 --- !u!68 &7737296519107720314
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -206,6 +193,34 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-299759084488345663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729510641750772001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf1c505997c4043912c0a7774c2b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  straightHorizantalRight: {fileID: 6480964394372237083, guid: 27ae09a5ac9bafa46a1bb74f1695d64c, type: 3}
+  position: {x: 0, y: 0, z: 0}
+--- !u!114 &2716621847620728325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729510641750772001}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a194e78c49ec10742bad021dcda363a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  gameManager: {fileID: 0}
 --- !u!1001 &7993054271442350901
 PrefabInstance:
   m_ObjectHideFlags: 0

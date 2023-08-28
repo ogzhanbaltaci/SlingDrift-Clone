@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7862276347122118265}
   - component: {fileID: 4216391319795083779}
-  - component: {fileID: -4555815224957839528}
   - component: {fileID: 4472787461336190304}
   - component: {fileID: 1332786076146063479}
+  - component: {fileID: -4555815224957839528}
+  - component: {fileID: 2850536962864723949}
   m_Layer: 0
   m_Name: roads_straight_horizantal-right
   m_TagString: StraightRight
@@ -88,22 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4555815224957839528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818195924103557753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f14dfa6f6af4bc46beccbfceca926ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roads:
-  - {fileID: 8657991134988509432, guid: 99a3b3176a8cfc54e97452f8d2b2fca1, type: 3}
-  - {fileID: 7641177772442343636, guid: 755f12596bc982e4b80906ff63ae4526, type: 3}
-  position: {x: 0, y: 0, z: 0}
 --- !u!68 &4472787461336190304
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -148,6 +133,35 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-4555815224957839528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818195924103557753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f14dfa6f6af4bc46beccbfceca926ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roads:
+  - {fileID: 8657991134988509432, guid: 99a3b3176a8cfc54e97452f8d2b2fca1, type: 3}
+  - {fileID: 7641177772442343636, guid: 755f12596bc982e4b80906ff63ae4526, type: 3}
+  position: {x: 0, y: 0, z: 0}
+--- !u!114 &2850536962864723949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818195924103557753}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d6f21613fbfd04fa0eb36badc2014d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -70.70422, y: 77.04815, z: 0}
 --- !u!1 &7794154232945673888
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,35 +1,31 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
+using Unity.Mathematics;
+using System.Diagnostics.Tracing;
 
-
-
-public class StraightUp : MonoBehaviour
+public class LeftTurn : MonoBehaviour
 {
+    [SerializeField] GameObject straightHorizantalLeft;
     public Vector3 position;
-    [SerializeField] List<GameObject> roads = new List<GameObject>();
-    GameManager gameManager;
-    Random random = new Random();
 
-    
+
+    GameManager gameManager;
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         BuildRoad();
+        
     }
+    
 
     
     public void BuildRoad()
     {
-        int count = roads.Count;
-        int index = random.Next(count);
-        GameObject pickedRoad = roads[index];
         position = transform.Find(GameConstants.FinishPos).position;
         if(gameManager.counter < gameManager.builtRoadCounter)
         {
-            GameObject road = Instantiate(pickedRoad, position, Quaternion.identity);
+            GameObject road = Instantiate(straightHorizantalLeft, position, Quaternion.identity);
             gameManager.builtRoads.Add(road);
             gameManager.counter++;
         }
