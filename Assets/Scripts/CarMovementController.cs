@@ -2,28 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CarMovementController : MonoBehaviour
 {
-    [SerializeField] float carSpeed = 10f;
     [SerializeField] ParticleSystem crashEffect;
 
     SpriteRenderer carSprite;
     public DriftPoleController driftPoleController;
     public GameManager gameManager;
     public Rigidbody2D rb;
+    public Transform targetLevelUp;
     public Transform target;
     
     public int roadSeen = 0;
     public bool isTriggered;
     public bool isDrifting;
     public bool isCrashed;
-    int levelUpPoints = 5;
-    float rotationSpeed = 70f;
-    bool isLevelUp = false;
-    
-    
-    
+    public bool isLevelUp = false;
+
     [Header("Car settings")]
     public float driftFactor = 0.95f;
     public float accelerationFactor = 30.0f;
@@ -32,6 +29,7 @@ public class CarMovementController : MonoBehaviour
 
     float accelerationInput = 1;
     float rotationAngle = 0;
+    float rotationSpeed = 10f; 
     float velocityVsUp = 0;
     float crashForce = 100f;
 
@@ -44,16 +42,8 @@ public class CarMovementController : MonoBehaviour
     
     void Update() 
     {
-        /*if(gameManager.levelCounter == gameManager.levelUpCap)
-        {
-            gameManager.levelCounter = 0;
-            // do level up things
-        }*/
-        if(roadSeen >= levelUpPoints)
-        {
-            maxSpeed += 1;
-            levelUpPoints += 5; 
-        }
+        if(!isCrashed)
+            CheckInput(); 
     }
 
     void FixedUpdate()
@@ -62,51 +52,57 @@ public class CarMovementController : MonoBehaviour
         {
             ApplyEngineForce();
             KillOrthogonalVelocity();
-            CheckInput();
+            //CheckInput(); //for pc build 
         }
         if(isLevelUp)
         {
-            Debug.Log("update e girdi ");
-            Vector3 direction = target.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+            LevelUpRedirection();
         }
+    }
+
+    private void LevelUpRedirection() //Rotates the car so it can go straight on the levelUpRoads
+    {
+
+        Vector3 direction = targetLevelUp.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     public void CheckInput()
     {
         if(Input.GetMouseButton(0))
         {
-            if(isTriggered)
+            if(isTriggered && isLevelUp == false)
             {
                 isDrifting = true;
                 driftPoleController.lr.positionCount = 2;
-                driftPoleController.isCall(transform);
+                driftPoleController.isDrifting(transform);
                 ApplySteering();
             }
         }
-        else if(isTriggered == true)
+        else if(isTriggered == true && isLevelUp == false)
         {
-            //driftPoleController.lr.positionCount = 0; 
+            driftPoleController.lr.positionCount = 0; 
             isDrifting = false;
-            //Debug.Log(gameManager.builtRoads[roadSeen].transform.position);
-            //transform.LookAt(gameManager.builtRoads[roadSeen].transform.position * Time.deltaTime);
-            //Quaternion targetRotation = Quaternion.LookRotation(gameManager.builtRoads[roadSeen].transform.position - transform.position);
 
-            // Yavaşça dönüş yap
-            //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1f * Time.deltaTime);
+            /*Vector3 direction = target.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
         }
         else
         {
             isDrifting = false;
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D other) 
     { 
         isTriggered = true;
         driftPoleController = other.gameObject.GetComponent<DriftPoleController>();
+
+        //Finds the turning angle so it can rotate the right way
         if(other.gameObject.tag == ("roadLeft"))
         {
             driftPoleController.turningAngle = -1;
@@ -115,53 +111,41 @@ public class CarMovementController : MonoBehaviour
         {
             driftPoleController.turningAngle = 1;
         }     
-        else if(other.name == (GameConstants.LevelUpLeft) || 
+        else if(other.name == (GameConstants.LevelUpLeft) || //Finds the levelUpRoads position
                 other.name == (GameConstants.LevelUpRight) ||
                 other.name == (GameConstants.LevelUpUp))
         { 
-            
-            target = other.transform.Find(GameConstants.FinishPos);
+            targetLevelUp = other.transform.Find(GameConstants.FinishPos);
             isLevelUp = true;
-            Debug.Log("ontriggerEnter : " + isLevelUp);
-            accelerationFactor = 100f;
-            maxSpeed = 100f;
         }
     }
-
 
     private void OnTriggerExit2D(Collider2D other) 
     {
         roadSeen++;
         isTriggered = false;  
-        //driftPoleController.lr.positionCount = 0; 
-        accelerationFactor = 30f;
         isLevelUp = false;
-        Debug.Log("exite girdi : " + isLevelUp);
-        /*Debug.Log(gameManager.builtRoads[roadSeen * 2].transform.position);
-          Vector3 direction = gameManager.builtRoads[roadSeen * 2].transform.position;
-          Debug.Log(transform.position);
-          Debug.Log(direction);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Debug.Log(angle);
-        // Z rotasyonunu hesaplayarak nesneyi döndür
-        transform.rotation = Quaternion.Euler(0, 0, angle);*/
     }
-    /*private void OnCollisionEnter2D(Collision2D other) 
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        OnCrash();
+        Vector3 stoppingDirection = -other.contacts[0].normal;
+        rb.AddForceAtPosition(stoppingDirection * crashForce, other.contacts[0].point, ForceMode2D.Impulse);
+    }
+
+    void OnCrash() //When the car hits the collider this method gets called
     {
         gameManager.EnableRetryCanvas();
         isCrashed = true;
-        carSprite.color = Color.black;
-        Vector3 stoppingDirection = -other.contacts[0].normal;
-           
-        rb.AddForceAtPosition(stoppingDirection * crashForce, other.contacts[0].point, ForceMode2D.Impulse);
-        driftPoleController.lr.positionCount = 0;
         isDrifting = false;
+        carSprite.color = Color.black;
+        driftPoleController.lr.positionCount = 0;
         crashEffect.Play();
-        
-    }*/
+    }
 
     void ApplyEngineForce()
     {
+        //Prevents the car from going faster than maxSpeed
         velocityVsUp = Vector2.Dot(transform.up, rb.velocity);
         if (velocityVsUp > maxSpeed && accelerationInput > 0)
             return;
@@ -169,16 +153,16 @@ public class CarMovementController : MonoBehaviour
         //Create a force for the engine
         Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
 
-        //Apply force and pushes the car forward
+        //Applies force that will move the car forward
         rb.AddForce(engineForceVector, ForceMode2D.Force);
     }
 
     void ApplySteering()
     {
-        //Update the rotation angle based on input
+        //Sets the drift direction according to the next incoming driftPole
         rotationAngle -= driftPoleController.turningAngle * turnFactor ;
 
-        //Apply steering by rotating the car object
+        //Applies the angle so the car will drift
         rb.MoveRotation(rotationAngle);
     }
 
@@ -188,14 +172,8 @@ public class CarMovementController : MonoBehaviour
         Vector2 forwardVelocity = transform.up * Vector2.Dot(rb.velocity, transform.up);
         Vector2 rightVelocity = transform.right * Vector2.Dot(rb.velocity, transform.right);
 
-        //Kill the orthogonal velocity (side velocity) based on how much the car should drift. 
+        //The value is slightly reduced with the driftFactor to prevent the car from drifting too much.
         rb.velocity = forwardVelocity + rightVelocity * driftFactor;
-    }
-
-    float GetLateralVelocity()
-    {
-        //Returns how how fast the car is moving sideways. 
-        return Vector2.Dot(transform.right, rb.velocity);
     }
 
     public float GetVelocityMagnitude()

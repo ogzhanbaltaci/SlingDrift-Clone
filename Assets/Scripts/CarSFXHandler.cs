@@ -40,7 +40,7 @@ public class CarSFXHandler : MonoBehaviour
         float desiredEngineVolume = velocityMagnitude * 0.05f;
         engineAudioSource.volume = Mathf.Lerp(engineAudioSource.volume, desiredEngineVolume, Time.deltaTime * 10);
 
-        //To add more variation to the engine sound we also change the pitch
+        //Changing the pitch of the engine
         desiredEnginePitch = velocityMagnitude * 0.2f;
         desiredEnginePitch = Mathf.Clamp(desiredEnginePitch, 0.5f, 2f);
         engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, desiredEnginePitch, Time.deltaTime * 1.5f);

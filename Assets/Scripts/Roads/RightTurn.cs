@@ -16,6 +16,7 @@ public class RightTurn : MonoBehaviour
         BuildRoad();
         
     }
+
     public void BuildLevelUpRoad()
     {
         position = transform.Find(GameConstants.FinishPos).position;
@@ -27,6 +28,7 @@ public class RightTurn : MonoBehaviour
             gameManager.levelCounter++;
         }
     }
+    
     public void BuildRoad()
     {
         position = transform.Find(GameConstants.FinishPos).position;

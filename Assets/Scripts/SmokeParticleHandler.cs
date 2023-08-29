@@ -17,22 +17,19 @@ public class SmokeParticleHandler : MonoBehaviour
         particleSystemSmoke = GetComponent<ParticleSystem>();
 
         particleSystemEmissionModule = particleSystemSmoke.emission;
-
         particleSystemEmissionModule.rateOverTime = 0;
     }
 
 
     void Update()
     {
-
+        //Reduces the particles over time.
         particleEmissionRate = Mathf.Lerp(particleEmissionRate, 0, Time.deltaTime * 5);
         particleSystemEmissionModule.rateOverTime = particleEmissionRate;
-
 
         if (carMovementController.isDrifting)
         {
             particleEmissionRate = 60;   
-            //particleEmissionRate = Mathf.Abs(lateralVelocity) *2;
         }
     }
 }

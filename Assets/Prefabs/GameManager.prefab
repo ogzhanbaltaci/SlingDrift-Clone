@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2651018451886919402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2651018451886919400}
+  - component: {fileID: 2651018451886919399}
+  - component: {fileID: 2651018451886919398}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2651018451886919400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651018451886919402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2651018451886919399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651018451886919402}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37bc9a2e2d481646bdb05e9696a5d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 0}
+  retryCanvas: {fileID: 0}
+  startCanvas: {fileID: 0}
+  inGameCanvas: {fileID: 0}
+  scoreText: {fileID: 0}
+  builtRoads:
+  - {fileID: 3349767332668485081, guid: c31af2691f9a31e46b8741271a218d06, type: 3}
+  counter: 0
+  builtRoadCounter: 11
+  levelCounter: 0
+  levelUpCap: 13
+--- !u!114 &2651018451886919398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651018451886919402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23baba4da829ac14c8e50821ddbf8bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 0}
+  retryCanvas: {fileID: 0}
+  startCanvas: {fileID: 0}
+  inGameCanvas: {fileID: 0}
+  scoreText: {fileID: 0}
+  builtRoads:
+  - {fileID: 0}
+  afterStraightLeftRoads:
+  - {fileID: 6729510641750772001, guid: a8dc7a97ca7dfe6468a8472722a6a3c4, type: 3}
+  - {fileID: 4241623693234108942, guid: f72886db847edff449b17eae86fcc97a, type: 3}
+  afterStraightRightRoads:
+  - {fileID: 8657991134988509432, guid: 99a3b3176a8cfc54e97452f8d2b2fca1, type: 3}
+  - {fileID: 7641177772442343636, guid: 755f12596bc982e4b80906ff63ae4526, type: 3}
+  afterStraightUpRoads:
+  - {fileID: 7965660728312453751, guid: 08967da606c761f4ea96678d52b4f87d, type: 3}
+  - {fileID: 3349767332668485081, guid: c31af2691f9a31e46b8741271a218d06, type: 3}
+  straightHorizantalRight: {fileID: 2818195924103557753, guid: 6dea83cb702940f4c8e069bcf2504fc9, type: 3}
+  straightHorizantalLeft: {fileID: 8804761492058685178, guid: 2a55c8dfcb39dec4e899c8e770cfb1ab, type: 3}
+  straightVerticalUp: {fileID: 6480964394372237083, guid: 27ae09a5ac9bafa46a1bb74f1695d64c, type: 3}
+  counter: 0
+  builtRoadCounter: 1

@@ -10,14 +10,15 @@ public class LeftTurn : MonoBehaviour
     [SerializeField] GameObject straightRoadFinish;
     public Vector3 position;
 
-
     GameManager gameManager;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         BuildRoad();
         
     }
+    
     public void BuildLevelUpRoad()
     {
         position = transform.Find(GameConstants.FinishPos).position;
@@ -29,7 +30,6 @@ public class LeftTurn : MonoBehaviour
             gameManager.levelCounter++;
         }
     }
-
     
     public void BuildRoad()
     {

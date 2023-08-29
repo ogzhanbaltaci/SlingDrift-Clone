@@ -10,6 +10,7 @@ public class StraightRight : MonoBehaviour
 
     GameManager gameManager;
     Random random = new Random();
+    
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();

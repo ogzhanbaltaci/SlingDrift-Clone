@@ -9,6 +9,7 @@ public class StraightLeft : MonoBehaviour
     public Vector3 position;
     GameManager gameManager;
     Random random = new Random();
+    
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();

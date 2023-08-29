@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-    public Color startColor = Color.blue;   // Initial color
-    public Color endColor = Color.red;       // Final color
-    public float duration = 5.0f;            // Time it takes to transition between colors
-
+    public Color[] colors = new Color[] { Color.cyan, Color.blue, Color.green, Color.red, Color.yellow };
+    public float duration = 2.0f;            
+    private int currentColorIndex = 0;
     private float elapsedTime = 0.0f;
+    GameManager gameManager;
+    CarMovementController carMovementController;
+    void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        carMovementController = FindObjectOfType<CarMovementController>();
+        Camera.main.backgroundColor = colors[currentColorIndex];
+    }
 
     private void Update()
     {
-        // Update the elapsed time
-        elapsedTime += Time.deltaTime;
-
-        // Calculate the interpolation value based on elapsed time and duration
-        float t = Mathf.Clamp01(elapsedTime / duration);
-
-        // Interpolate between startColor and endColor
-        Color currentColor = Color.Lerp(startColor, endColor, t);
-
-        // Set the camera's background color
-        Camera.main.backgroundColor = currentColor;
-
-        // Reset elapsed time if the transition is complete
-        if (t >= 1.0f)
+        if(carMovementController.isLevelUp)
         {
-            elapsedTime = 0.0f;
-            Color tempColor = startColor;
-            startColor = endColor;
-            endColor = tempColor;
+            //Changes the color of the background with a smooth transition between colors
+            float t = elapsedTime += Time.deltaTime;
+            Color currentColor = Color.Lerp(colors[currentColorIndex], colors[(currentColorIndex + 1) % colors.Length], t);
+            Camera.main.backgroundColor = currentColor;
+
+            if (t >= 1.0f)
+            {
+                elapsedTime = 0.0f;
+                currentColorIndex = (currentColorIndex + 1) % colors.Length;
+            }
         }
     }
 }

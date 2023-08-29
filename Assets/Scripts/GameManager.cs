@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Canvas startCanvas;
     [SerializeField] Canvas inGameCanvas;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI levelUpText;
+    
 
     public List<GameObject> builtRoads = new List<GameObject>();
     public int counter = 0;
@@ -31,58 +33,83 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0; 
         inGameCanvas.gameObject.SetActive(false);
-
     }
 
     void Update()
     {
-        if(builtRoads.Count > 10)
-            lastRoad = builtRoads[builtRoadCounter-1];
-        if(levelCounter > levelUpCap)
-            levelCounter = 0;
+        UpdateBuiltRoadCounter();
 
         levelText.text = carMovementController.roadSeen.ToString();
-        if(carMovementController.roadSeen * 2 - 1 >= builtRoadCounter - 8 && levelCounter < levelUpCap)
+        ContinueBuilding();
+
+        if (carMovementController.isLevelUp)
         {
-            if(lastRoad.tag == GameConstants.LeftTurn)
+            StartCoroutine(WaitForTextDisappear());
+        }
+    }
+
+    private void UpdateBuiltRoadCounter()
+    {
+        if (builtRoads.Count > 10)
+            lastRoad = builtRoads[builtRoadCounter - 1]; //Finds the last roadPart on the list
+
+        if (levelCounter > levelUpCap)
+            levelCounter = 0;
+    }
+
+    private void ContinueBuilding() //Generates a new roadPart based on the shape of the last roadPart in the list
+    {
+        if (ShouldContinueBuilding())
+        {
+            if (lastRoad.tag == GameConstants.LeftTurn)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<LeftTurn>().BuildRoad();
+                builtRoads[builtRoadCounter - 2].GetComponent<LeftTurn>().BuildRoad();
             }
-            else if(lastRoad.tag == GameConstants.RightTurn)
+            else if (lastRoad.tag == GameConstants.RightTurn)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<RightTurn>().BuildRoad();
+                builtRoads[builtRoadCounter - 2].GetComponent<RightTurn>().BuildRoad();
             }
-            else if(lastRoad.tag == GameConstants.StraightLeft)
+            else if (lastRoad.tag == GameConstants.StraightLeft)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<StraightLeft>().BuildRoad();
+                builtRoads[builtRoadCounter - 2].GetComponent<StraightLeft>().BuildRoad();
             }
-            else if(lastRoad.tag == GameConstants.StraightRight)
+            else if (lastRoad.tag == GameConstants.StraightRight)
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<StraightRight>().BuildRoad();
+                builtRoads[builtRoadCounter - 2].GetComponent<StraightRight>().BuildRoad();
             }
             else
             {
                 builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<StraightUp>().BuildRoad();
-            }
-        }        
-        else if(levelCounter == levelUpCap)
-        {
-            if(lastRoad.tag == GameConstants.LeftTurn)
-            {
-                builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<LeftTurn>().BuildLevelUpRoad();
-            }
-            else if(lastRoad.tag == GameConstants.RightTurn)
-            {
-                builtRoadCounter++;
-                builtRoads[builtRoadCounter-2].GetComponent<RightTurn>().BuildLevelUpRoad();
+                builtRoads[builtRoadCounter - 2].GetComponent<StraightUp>().BuildRoad();
             }
         }
+        else if (levelCounter == levelUpCap)
+        {
+            carMovementController.maxSpeed += 1;
+            if (lastRoad.tag == GameConstants.LeftTurn)
+            {
+                builtRoadCounter++;
+                builtRoads[builtRoadCounter - 2].GetComponent<LeftTurn>().BuildLevelUpRoad();
+            }
+            else if (lastRoad.tag == GameConstants.RightTurn)
+            {
+                builtRoadCounter++;
+                builtRoads[builtRoadCounter - 2].GetComponent<RightTurn>().BuildLevelUpRoad();
+            }
+        }
+    }
+    private bool ShouldContinueBuilding()
+    {
+        return carMovementController.roadSeen * 2 - 1 >= builtRoadCounter - 8 && levelCounter < levelUpCap;
+    }
+    private void EnableCanvas(Canvas canvasToShow, Canvas canvasToHide)
+    {
+        canvasToShow.gameObject.SetActive(true);
+        canvasToHide.gameObject.SetActive(false);
     }
 
     public void RetryLevel()
@@ -92,16 +119,21 @@ public class GameManager : MonoBehaviour
 
     public void EnableRetryCanvas()
     {
-        retryCanvas.gameObject.SetActive(true);
-        inGameCanvas.gameObject.SetActive(false);
+        EnableCanvas(retryCanvas, inGameCanvas);
         scoreText.text = "Your Score " + carMovementController.roadSeen.ToString();
     }
 
     public void StartGame()
     {
         Time.timeScale = 1;
-        startCanvas.gameObject.SetActive(false);
-        inGameCanvas.gameObject.SetActive(true);
+        EnableCanvas(inGameCanvas, startCanvas);
+    }
+    
+    IEnumerator WaitForTextDisappear()
+    {
+        levelUpText.text = "Level Up!";
+        yield return new WaitForSeconds(2);
+        levelUpText.text = "";
     }
 
 

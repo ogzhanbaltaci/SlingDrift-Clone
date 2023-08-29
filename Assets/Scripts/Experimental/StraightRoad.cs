@@ -6,14 +6,14 @@ using Random = System.Random;
 public class StraightRoad : MonoBehaviour
 {
     public Vector3 position;
-    GameManager gameManager;
+    GameManagerExperimental gameManagerExperimental;
     Random random = new Random();
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManagerExperimental = FindObjectOfType<GameManagerExperimental>();
     }
 
-    public void BuildRoad(List<GameObject> roads)
+    public GameObject BuildRoad(List<GameObject> roads)
     {
         int count = roads.Count;
         int index = random.Next(count);
@@ -22,7 +22,8 @@ public class StraightRoad : MonoBehaviour
         
         
         Instantiate(pickedRoad, position, Quaternion.identity);
-        gameManager.builtRoads.Add(pickedRoad);
+        //gameManagerExperimental.builtRoads.Add(pickedRoad);
+        return pickedRoad;
             
         
             

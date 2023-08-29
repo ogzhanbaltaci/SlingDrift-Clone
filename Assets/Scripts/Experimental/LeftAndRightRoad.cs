@@ -7,10 +7,10 @@ public class LeftAndRightRoad : MonoBehaviour
     public Vector3 position;
 
 
-    public GameManager gameManager;
+    public GameManagerExperimental gameManagerExperimental;
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();     
+        gameManagerExperimental = FindObjectOfType<GameManagerExperimental>();     
         position = transform.Find(GameConstants.FinishPos).position;   
     }
 
@@ -20,11 +20,10 @@ public class LeftAndRightRoad : MonoBehaviour
     {
         
         GameObject pickedRoad = road;
-        
+        //gameManagerExperimental.builtRoads.Add(pickedRoad);
         Instantiate(pickedRoad, position, Quaternion.identity);
-        gameManager.builtRoads.Add(pickedRoad);
         
-        
+    
             
     }
 }
