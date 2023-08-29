@@ -43,7 +43,7 @@ public class CarMovementController : MonoBehaviour
     void Update() 
     {
         if(!isCrashed)
-            CheckInput(); 
+            CheckInput(); // for android build
     }
 
     void FixedUpdate()
