@@ -6,10 +6,7 @@ public class DriftPoleController : MonoBehaviour
 {
     [SerializeField] Transform rope;
     
-    public bool isTriggered;
-    public bool ropeAttached;
     public int turningAngle;
-
     public LineRenderer lr;
     CarMovementController carMovementController;
     
@@ -30,14 +27,8 @@ public class DriftPoleController : MonoBehaviour
         lr.SetPosition(1, playerCar.transform.position);
     }    
 
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        isTriggered = true;
-    }
-    
     private void OnTriggerExit2D(Collider2D other) 
-    {
-        isTriggered = false;     
+    {   
         lr.positionCount = 0;
     }
 }

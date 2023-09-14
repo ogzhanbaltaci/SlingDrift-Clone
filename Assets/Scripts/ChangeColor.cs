@@ -10,11 +10,14 @@ public class ChangeColor : MonoBehaviour
     private float elapsedTime = 0.0f;
     GameManager gameManager;
     CarMovementController carMovementController;
+    Camera mainCamera;
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         carMovementController = FindObjectOfType<CarMovementController>();
-        Camera.main.backgroundColor = colors[currentColorIndex];
+        mainCamera = Camera.main;
+        mainCamera.backgroundColor = colors[currentColorIndex];
+        
     }
 
     private void Update()
@@ -24,7 +27,7 @@ public class ChangeColor : MonoBehaviour
             //Changes the color of the background with a smooth transition between colors
             float t = elapsedTime += Time.deltaTime;
             Color currentColor = Color.Lerp(colors[currentColorIndex], colors[(currentColorIndex + 1) % colors.Length], t);
-            Camera.main.backgroundColor = currentColor;
+            mainCamera.backgroundColor = currentColor;
 
             if (t >= 1.0f)
             {

@@ -9,11 +9,10 @@ public class CarMovementController : MonoBehaviour
     [SerializeField] ParticleSystem crashEffect;
 
     SpriteRenderer carSprite;
-    public DriftPoleController driftPoleController;
-    public GameManager gameManager;
-    public Rigidbody2D rb;
-    public Transform targetLevelUp;
-    public Transform target;
+    DriftPoleController driftPoleController;
+    GameManager gameManager;
+    Rigidbody2D rb;
+    Transform targetLevelUp;
     
     public int roadSeen = 0;
     public bool isTriggered;
@@ -22,9 +21,9 @@ public class CarMovementController : MonoBehaviour
     public bool isLevelUp = false;
 
     [Header("Car settings")]
-    public float driftFactor = 0.95f;
-    public float accelerationFactor = 30.0f;
-    public float turnFactor = 3.5f;
+    [SerializeField] float driftFactor = 0.95f;
+    [SerializeField] float accelerationFactor = 30.0f;
+    [SerializeField] float turnFactor = 3.5f;
     public float maxSpeed = 30;
 
     float accelerationInput = 1;
@@ -32,6 +31,7 @@ public class CarMovementController : MonoBehaviour
     float rotationSpeed = 10f; 
     float velocityVsUp = 0;
     float crashForce = 100f;
+    public bool canSpeedUp;
 
     void Awake() 
     {  
@@ -42,8 +42,8 @@ public class CarMovementController : MonoBehaviour
     
     void Update() 
     {
-        if(!isCrashed)
-            CheckInput(); // for android build
+        //if(!isCrashed)
+           // CheckInput(); // for android build
     }
 
     void FixedUpdate()
@@ -52,7 +52,7 @@ public class CarMovementController : MonoBehaviour
         {
             ApplyEngineForce();
             KillOrthogonalVelocity();
-            //CheckInput(); //for pc build 
+            CheckInput(); //for pc build 
         }
         if(isLevelUp)
         {
@@ -85,11 +85,6 @@ public class CarMovementController : MonoBehaviour
         {
             driftPoleController.lr.positionCount = 0; 
             isDrifting = false;
-
-            /*Vector3 direction = target.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);*/
         }
         else
         {
@@ -103,11 +98,11 @@ public class CarMovementController : MonoBehaviour
         driftPoleController = other.gameObject.GetComponent<DriftPoleController>();
 
         //Finds the turning angle so it can rotate the right way
-        if(other.gameObject.tag == ("roadLeft"))
+        if(other.gameObject.CompareTag("roadLeft"))
         {
             driftPoleController.turningAngle = -1;
         }
-        else if(other.gameObject.tag == ("roadRight"))
+        else if(other.gameObject.CompareTag("roadRight"))
         {
             driftPoleController.turningAngle = 1;
         }     
@@ -117,6 +112,7 @@ public class CarMovementController : MonoBehaviour
         { 
             targetLevelUp = other.transform.Find(GameConstants.FinishPos);
             isLevelUp = true;
+            canSpeedUp = true;
         }
     }
 
@@ -179,6 +175,15 @@ public class CarMovementController : MonoBehaviour
     public float GetVelocityMagnitude()
     {
         return rb.velocity.magnitude;
+    }
+
+    public void IncreaseMaxSpeed(bool condition)
+    {
+        if(condition == true)
+        {
+            maxSpeed += 1;
+            canSpeedUp = false;
+        }
     }
 
 }

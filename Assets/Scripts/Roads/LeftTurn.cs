@@ -11,10 +11,11 @@ public class LeftTurn : MonoBehaviour
     public Vector3 position;
 
     GameManager gameManager;
+    RoadGenerator roadGenerator;
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        roadGenerator = FindObjectOfType<RoadGenerator>();
         BuildRoad();
         
     }
@@ -22,24 +23,24 @@ public class LeftTurn : MonoBehaviour
     public void BuildLevelUpRoad()
     {
         position = transform.Find(GameConstants.FinishPos).position;
-        if(gameManager.counter < gameManager.builtRoadCounter)
+        if(roadGenerator.counter < roadGenerator.builtRoadCounter)
         {
             GameObject road = Instantiate(straightRoadFinish, position, Quaternion.identity);
-            gameManager.builtRoads.Add(road);
-            gameManager.counter++;
-            gameManager.levelCounter++;
+            roadGenerator.builtRoads.Add(road);
+            roadGenerator.counter++;
+            roadGenerator.levelCounter++;
         }
     }
     
     public void BuildRoad()
     {
         position = transform.Find(GameConstants.FinishPos).position;
-        if(gameManager.counter < gameManager.builtRoadCounter)
+        if(roadGenerator.counter < roadGenerator.builtRoadCounter)
         {
             GameObject road = Instantiate(straightRoad, position, Quaternion.identity);
-            gameManager.builtRoads.Add(road);
-            gameManager.counter++;
-            gameManager.levelCounter++;
+            roadGenerator.builtRoads.Add(road);
+            roadGenerator.counter++;
+            roadGenerator.levelCounter++;
         }
             
     }

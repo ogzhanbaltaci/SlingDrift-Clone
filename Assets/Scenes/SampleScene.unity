@@ -631,6 +631,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6480964394372237077, guid: 27ae09a5ac9bafa46a1bb74f1695d64c, type: 3}
   m_PrefabInstance: {fileID: 6480964393148922444}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &701281314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701281316}
+  - component: {fileID: 701281315}
+  m_Layer: 0
+  m_Name: RoadGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &701281315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701281314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534336ad5581c9947aef4031236d83d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  builtRoads: []
+  counter: 0
+  builtRoadCounter: 11
+  levelCounter: 0
+--- !u!4 &701281316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701281314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787203845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,11 +1356,6 @@ MonoBehaviour:
   inGameCanvas: {fileID: 1643729414}
   scoreText: {fileID: 213452867}
   levelUpText: {fileID: 2082481470}
-  builtRoads: []
-  counter: 0
-  builtRoadCounter: 11
-  levelCounter: 0
-  levelUpCap: 13
 --- !u!1 &1643729411
 GameObject:
   m_ObjectHideFlags: 0
