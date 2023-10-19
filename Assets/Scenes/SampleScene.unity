@@ -619,6 +619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c404e7ce9bf539478ec43ba9a189e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1300882360}
+  carMovementController: {fileID: 1435170123}
   colors:
   - {r: 0.19215688, g: 0.47450984, b: 0.427451, a: 1}
   - {r: 1, g: 0.9215687, b: 0.015686275, a: 1}
@@ -660,6 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534336ad5581c9947aef4031236d83d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carMovementController: {fileID: 1435170123}
   builtRoads: []
   counter: 0
   builtRoadCounter: 11
@@ -1356,6 +1359,19 @@ MonoBehaviour:
   inGameCanvas: {fileID: 1643729414}
   scoreText: {fileID: 213452867}
   levelUpText: {fileID: 2082481470}
+  carMovementController: {fileID: 1435170123}
+  roadGenerator: {fileID: 701281315}
+--- !u!114 &1435170123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8889930831964522630, guid: e2d38deb2651be04588a6ef2d063a26c, type: 3}
+  m_PrefabInstance: {fileID: 814117529864231490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634b4d4e6f0fb8740972098ddcab92a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1643729411
 GameObject:
   m_ObjectHideFlags: 0

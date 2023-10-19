@@ -13,14 +13,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] Canvas inGameCanvas;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI levelUpText;
+    public CarMovementController carMovementController;
+    public RoadGenerator roadGenerator;
 
-    CarMovementController carMovementController;
+    public static GameManager instance { get; private set; }
 
-    void Awake() 
-    {
-        carMovementController = FindObjectOfType<CarMovementController>(); 
+    private void Awake() 
+    { 
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this; 
+        } 
     }
-
+    
     void Start()
     {
         Time.timeScale = 0; 

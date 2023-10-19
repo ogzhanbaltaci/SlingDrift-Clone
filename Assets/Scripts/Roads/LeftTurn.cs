@@ -9,15 +9,12 @@ public class LeftTurn : MonoBehaviour
     [SerializeField] GameObject straightRoad;
     [SerializeField] GameObject straightRoadFinish;
     public Vector3 position;
-
-    GameManager gameManager;
     RoadGenerator roadGenerator;
 
     void Start()
     {
-        roadGenerator = FindObjectOfType<RoadGenerator>();
-        BuildRoad();
-        
+        roadGenerator = GameManager.instance.roadGenerator;
+        BuildRoad(); 
     }
     
     public void BuildLevelUpRoad()

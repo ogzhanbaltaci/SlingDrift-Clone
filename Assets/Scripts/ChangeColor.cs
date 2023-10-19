@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
+    [SerializeField] CarMovementController carMovementController;
     public Color[] colors = new Color[] { Color.cyan, Color.blue, Color.green, Color.red, Color.yellow };
     public float duration = 2.0f;            
     private int currentColorIndex = 0;
     private float elapsedTime = 0.0f;
-    GameManager gameManager;
-    CarMovementController carMovementController;
+    
     Camera mainCamera;
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        carMovementController = FindObjectOfType<CarMovementController>();
         mainCamera = Camera.main;
         mainCamera.backgroundColor = colors[currentColorIndex];
         

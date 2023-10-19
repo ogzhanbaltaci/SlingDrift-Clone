@@ -13,7 +13,7 @@ public class DriftPoleController : MonoBehaviour
 
     void Start()
     {
-        carMovementController = FindObjectOfType<CarMovementController>();
+        carMovementController = GameManager.instance.carMovementController;
         lr = GetComponentInChildren<LineRenderer>();
         lr.positionCount = 2;
     }

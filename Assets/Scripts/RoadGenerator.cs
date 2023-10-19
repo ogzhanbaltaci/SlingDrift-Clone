@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
+    [SerializeField] CarMovementController carMovementController;
     public List<GameObject> builtRoads = new List<GameObject>();
     public int counter = 0;
     public int builtRoadCounter = 11;
     public int levelCounter = 0;
     int levelUpCap = 13;
-
-    CarMovementController carMovementController;
     GameObject lastRoad;
 
-    void Awake() 
-    {
-        carMovementController = FindObjectOfType<CarMovementController>(); 
-    }
 
     void Update()
     {

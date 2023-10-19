@@ -7,12 +7,11 @@ public class StraightLeft : MonoBehaviour
 {
     [SerializeField] List<GameObject> roads = new List<GameObject>();
     public Vector3 position;
-    GameManager gameManager;
     RoadGenerator roadGenerator;
     
     void Start()
     {
-        roadGenerator = FindObjectOfType<RoadGenerator>();
+        roadGenerator = GameManager.instance.roadGenerator;
         BuildRoad();      
     }
 
